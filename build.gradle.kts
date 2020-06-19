@@ -1,6 +1,5 @@
 import ratpack.gradle.RatpackPlugin
 
-
 buildscript {
     dependencies {
         classpath("io.ratpack:ratpack-gradle:1.8.0")
@@ -10,10 +9,15 @@ buildscript {
 plugins {
     kotlin("jvm") version "1.3.72"
     groovy
+    application
 }
 
 apply {
     plugin<RatpackPlugin>()
+}
+
+application {
+    mainClassName = "me.kcybulski.chinachat.Start"
 }
 
 group = "me.kcybulski"

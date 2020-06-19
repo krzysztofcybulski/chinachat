@@ -1,4 +1,4 @@
-package chinachat.api
+package me.kcybulski.chinachat.api
 
 import chinachat.api.dto.Action
 import chinachat.api.dto.EventDTO

@@ -1,12 +1,12 @@
-package chinachat
+package me.kcybulski.chinachat
 
 
-import chinachat.api.Server
-import chinachat.domain.ChatFactory
-import chinachat.domain.ChatsList
-import chinachat.domain.Security
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.KotlinModule
+import me.kcybulski.chinachat.api.Server
+import me.kcybulski.chinachat.domain.ChatFactory
+import me.kcybulski.chinachat.domain.ChatsList
+import me.kcybulski.chinachat.domain.Security
 import ratpack.http.client.ReceivedResponse
 import ratpack.http.client.RequestSpec
 import ratpack.test.embed.EmbeddedApp

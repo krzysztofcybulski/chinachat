@@ -1,4 +1,4 @@
-package chinachat.api
+package me.kcybulski.chinachat.api
 
 import chinachat.domain.ChatFactory
 import chinachat.domain.ChatsList

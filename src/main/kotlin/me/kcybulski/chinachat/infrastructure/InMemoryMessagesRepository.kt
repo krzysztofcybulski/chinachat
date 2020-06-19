@@ -1,4 +1,4 @@
-package chinachat.infrastructure
+package me.kcybulski.chinachat.infrastructure
 
 import chinachat.domain.Chat
 import chinachat.domain.MessageEvent

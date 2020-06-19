@@ -1,4 +1,4 @@
-package chinachat.domain
+package me.kcybulski.chinachat.domain
 
 import java.time.LocalDateTime
 import java.time.LocalDateTime.now

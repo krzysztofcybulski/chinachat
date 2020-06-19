@@ -1,4 +1,4 @@
-package chinachat.domain
+package me.kcybulski.chinachat.domain
 
 import io.reactivex.BackpressureStrategy.LATEST
 import io.reactivex.Flowable

@@ -1,4 +1,4 @@
-package chinachat
+package me.kcybulski.chinachat
 
 class ChatSpec extends ApiSpec {
 

@@ -1,4 +1,4 @@
-package chinachat.api.dto
+package me.kcybulski.chinachat.api.dto
 
 import chinachat.domain.Chat
 

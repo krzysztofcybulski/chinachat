@@ -1,4 +1,4 @@
-package chinachat.plugins
+package me.kcybulski.chinachat.plugins
 
 import chinachat.domain.Chat
 import chinachat.domain.MessageRequest

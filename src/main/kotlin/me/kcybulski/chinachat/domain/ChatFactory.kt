@@ -1,4 +1,4 @@
-package chinachat.domain
+package me.kcybulski.chinachat.domain
 
 import java.util.UUID.randomUUID
 

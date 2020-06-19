@@ -1,4 +1,4 @@
-package chinachat
+package me.kcybulski.chinachat
 
 import chinachat.api.Server
 import chinachat.domain.Chat
