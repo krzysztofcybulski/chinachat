@@ -19,5 +19,6 @@ fun main() {
     Server(chats, chatFactory).run { start() }
 }
 
-private fun createGeneralChat(messagesRepository: MessagesRepository) = Chat("general", "General", messagesRepository)
-    .also { it.addPlugin(WeatherPlugin()) }
+private fun createGeneralChat(messagesRepository: MessagesRepository) =
+    Chat("general", "General", messagesRepository)
+        .also { it.addPlugin(WeatherPlugin()) }
