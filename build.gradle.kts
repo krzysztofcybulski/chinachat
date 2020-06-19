@@ -17,7 +17,7 @@ apply {
 }
 
 application {
-    mainClassName = "me.kcybulski.chinachat.AppKt"
+    mainClassName = "me.kcybulski.chinachat.StartKt"
 }
 
 group = "me.kcybulski"
