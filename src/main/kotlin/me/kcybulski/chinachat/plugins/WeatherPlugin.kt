@@ -1,9 +1,9 @@
 package me.kcybulski.chinachat.plugins
 
-import chinachat.domain.Chat
-import chinachat.domain.MessageRequest
-import chinachat.domain.Plugin
-import chinachat.domain.User
+import me.kcybulski.chinachat.domain.Chat
+import me.kcybulski.chinachat.domain.MessageRequest
+import me.kcybulski.chinachat.domain.Plugin
+import me.kcybulski.chinachat.domain.User
 
 class WeatherPlugin : Plugin {
 

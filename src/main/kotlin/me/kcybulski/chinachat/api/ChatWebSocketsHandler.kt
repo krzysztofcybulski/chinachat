@@ -1,14 +1,14 @@
 package me.kcybulski.chinachat.api
 
-import chinachat.api.dto.Action
-import chinachat.api.dto.EventDTO
-import chinachat.api.dto.MessageAction
-import chinachat.api.dto.WritingAction
-import chinachat.domain.Chat
-import chinachat.domain.Event
-import chinachat.domain.MessageRequest
-import chinachat.domain.User
 import com.fasterxml.jackson.databind.ObjectMapper
+import me.kcybulski.chinachat.api.dto.Action
+import me.kcybulski.chinachat.api.dto.EventDTO
+import me.kcybulski.chinachat.api.dto.MessageAction
+import me.kcybulski.chinachat.api.dto.WritingAction
+import me.kcybulski.chinachat.domain.Chat
+import me.kcybulski.chinachat.domain.Event
+import me.kcybulski.chinachat.domain.MessageRequest
+import me.kcybulski.chinachat.domain.User
 import ratpack.handling.Chain
 import ratpack.websocket.WebSocket
 import ratpack.websocket.WebSocketClose

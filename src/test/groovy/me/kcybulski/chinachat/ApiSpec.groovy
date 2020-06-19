@@ -1,6 +1,5 @@
 package me.kcybulski.chinachat
 
-
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import me.kcybulski.chinachat.api.Server

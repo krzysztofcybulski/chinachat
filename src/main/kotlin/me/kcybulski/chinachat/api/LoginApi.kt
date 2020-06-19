@@ -1,8 +1,8 @@
 package me.kcybulski.chinachat.api
 
-import chinachat.api.dto.LoginRequest
-import chinachat.api.dto.LoginResponse
-import chinachat.domain.Security
+import me.kcybulski.chinachat.api.dto.LoginRequest
+import me.kcybulski.chinachat.api.dto.LoginResponse
+import me.kcybulski.chinachat.domain.Security
 import ratpack.exec.Promise.toPromise
 import ratpack.handling.Context
 import ratpack.handling.Handler

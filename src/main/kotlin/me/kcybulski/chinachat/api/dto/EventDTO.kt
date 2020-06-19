@@ -1,7 +1,7 @@
 package me.kcybulski.chinachat.api.dto
 
-import chinachat.api.dto.EventType.*
-import chinachat.domain.*
+import me.kcybulski.chinachat.api.dto.EventType.*
+import me.kcybulski.chinachat.domain.*
 
 data class EventDTO<T>(val type: EventType, val payload: T) {
 

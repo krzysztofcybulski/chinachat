@@ -1,12 +1,12 @@
 package me.kcybulski.chinachat
 
-import chinachat.api.Server
-import chinachat.domain.Chat
-import chinachat.domain.ChatFactory
-import chinachat.domain.ChatsList
-import chinachat.domain.MessagesRepository
-import chinachat.infrastructure.InMemoryMessagesRepository
-import chinachat.plugins.WeatherPlugin
+import me.kcybulski.chinachat.api.Server
+import me.kcybulski.chinachat.domain.Chat
+import me.kcybulski.chinachat.domain.ChatFactory
+import me.kcybulski.chinachat.domain.ChatsList
+import me.kcybulski.chinachat.domain.MessagesRepository
+import me.kcybulski.chinachat.infrastructure.InMemoryMessagesRepository
+import me.kcybulski.chinachat.plugins.WeatherPlugin
 
 fun main() {
 

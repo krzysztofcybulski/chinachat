@@ -1,6 +1,6 @@
 package me.kcybulski.chinachat.api.dto
 
-import chinachat.domain.Chat
+import me.kcybulski.chinachat.domain.Chat
 
 data class ChatListResponse(val chats: List<ChatResponse>) {
 

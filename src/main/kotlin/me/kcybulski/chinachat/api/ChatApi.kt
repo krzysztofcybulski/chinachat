@@ -1,13 +1,13 @@
 package me.kcybulski.chinachat.api
 
-import chinachat.api.dto.ChatListResponse.Companion.fromChats
-import chinachat.api.dto.ChatRequest
-import chinachat.api.dto.ChatResponse.Companion.fromChat
-import chinachat.domain.ChatFactory
-import chinachat.domain.ChatsList
-import chinachat.domain.Security
-import chinachat.domain.User
 import io.netty.handler.codec.http.HttpHeaderNames.AUTHORIZATION
+import me.kcybulski.chinachat.api.dto.ChatListResponse.Companion.fromChats
+import me.kcybulski.chinachat.api.dto.ChatRequest
+import me.kcybulski.chinachat.api.dto.ChatResponse.Companion.fromChat
+import me.kcybulski.chinachat.domain.ChatFactory
+import me.kcybulski.chinachat.domain.ChatsList
+import me.kcybulski.chinachat.domain.Security
+import me.kcybulski.chinachat.domain.User
 import ratpack.exec.Promise.toPromise
 import ratpack.handling.Chain
 import ratpack.handling.Context
