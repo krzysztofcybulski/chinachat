@@ -1,6 +1,19 @@
+import ratpack.gradle.RatpackPlugin
+
+
+buildscript {
+    dependencies {
+        classpath("io.ratpack:ratpack-gradle:1.8.0")
+    }
+}
+
 plugins {
     kotlin("jvm") version "1.3.72"
     groovy
+}
+
+apply {
+    plugin<RatpackPlugin>()
 }
 
 group = "me.kcybulski"
@@ -12,7 +25,6 @@ repositories {
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
-    implementation("io.ratpack", "ratpack-core", "1.8.0")
     implementation("io.reactivex.rxjava2", "rxjava", "2.2.19")
     implementation("com.auth0", "java-jwt", "3.10.3")
     implementation("com.fasterxml.jackson.module", "jackson-module-kotlin", "2.11.0")

@@ -20,9 +20,7 @@ class Server(
     private val ratpackServer: RatpackServer = RatpackServer.of { server ->
         server
             .serverConfig { config ->
-                config
-                    .development(true)
-                    .threads(1)
+                config.threads(1)
             }
             .registryOf { registry ->
                 registry
