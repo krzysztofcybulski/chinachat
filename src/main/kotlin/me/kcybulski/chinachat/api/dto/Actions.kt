@@ -8,9 +8,11 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME
 @JsonTypeInfo(use = NAME, include = PROPERTY, property = "action")
 @JsonSubTypes(
     JsonSubTypes.Type(value = MessageAction::class, name = "message"),
+    JsonSubTypes.Type(value = MediaMessageAction::class, name = "media"),
     JsonSubTypes.Type(value = WritingAction::class, name = "writing")
 )
 interface Action
 
-data class MessageAction(val content: String) : Action
+data class MessageAction(val content: String?, val mediaUrl: String?) : Action
+data class MediaMessageAction(val url: String) : Action
 class WritingAction : Action

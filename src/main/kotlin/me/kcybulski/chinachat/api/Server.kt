@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import me.kcybulski.chinachat.domain.ChatFactory
 import me.kcybulski.chinachat.domain.ChatsList
+import me.kcybulski.chinachat.domain.FilesStorage
 import me.kcybulski.chinachat.domain.Security
 import ratpack.func.Action
 import ratpack.handling.Chain
@@ -14,6 +15,7 @@ import ratpack.server.RatpackServer
 class Server(
     private val chats: ChatsList,
     private val chatFactory: ChatFactory,
+    private val filesStorage: FilesStorage,
     private val security: Security = Security(),
     private val objectMapper: ObjectMapper = ObjectMapper().registerModule(KotlinModule())
 ) {
@@ -34,11 +36,12 @@ class Server(
     fun start() = ratpackServer.start()
     fun stop() = ratpackServer.stop()
 
-    private fun api(): Action<Chain> = Action<Chain> { chain ->
+    private fun api(): Action<Chain> = Action { chain ->
         chain
             .all(RequestLogger.ncsa())
             .all { addCORSHeaders(it) }
             .post("login", LoginApi(security))
+            .post("upload", ImagesApi(security, filesStorage))
             .prefix("chats") { ChatApi(it, chats, chatFactory) }
     }
 

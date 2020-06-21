@@ -12,6 +12,6 @@ class WeatherPlugin : Plugin {
     override fun command() = "weather"
 
     override fun run(chat: Chat, vararg args: String) {
-        chat.sendMessage(User("weather"), MessageRequest(args[0]))
+        chat.sendMessage(User("weather"), MessageRequest(args[0], null))
     }
 }

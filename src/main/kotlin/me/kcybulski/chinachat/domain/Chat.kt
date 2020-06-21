@@ -29,8 +29,8 @@ class Chat(val id: String, val name: String, private val messagesRepository: Mes
     }
 
     fun sendMessage(author: User, messageRequest: MessageRequest) {
-        val message = MessageEvent(messageRequest.content, author)
-        if (message.content.isNotBlank() && isNotCommand(message)) {
+        val message = messageRequest.toEvent(author)
+        if (message.hasContent() && isNotCommand(message)) {
             messagesRepository.save(this, message)
                 .thenAccept { sendEvent(it) }
         }
@@ -52,6 +52,6 @@ class Chat(val id: String, val name: String, private val messagesRepository: Mes
 
     private fun chatStream() = chatSubject.toFlowable(LATEST)
 
-    private fun isNotCommand(event: MessageEvent) = event.content.startsWith("/")
+    private fun isNotCommand(event: MessageEvent) = !event.content.startsWith("/")
 
 }

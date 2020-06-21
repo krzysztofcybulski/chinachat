@@ -38,7 +38,7 @@ class ChatWebSocketsHandler(
 
     override fun onMessage(frame: WebSocketMessage<String>) {
         when (val action = getAction(frame)) {
-            is MessageAction -> chat.sendMessage(user, MessageRequest(action.content))
+            is MessageAction -> chat.sendMessage(user, MessageRequest(action.content, action.mediaUrl))
             is WritingAction -> chat.startWriting(user)
         }
     }

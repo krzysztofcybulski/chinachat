@@ -1,22 +1,25 @@
 package me.kcybulski.chinachat
 
 import me.kcybulski.chinachat.api.Server
-import me.kcybulski.chinachat.domain.Chat
-import me.kcybulski.chinachat.domain.ChatFactory
-import me.kcybulski.chinachat.domain.ChatsList
-import me.kcybulski.chinachat.domain.MessagesRepository
+import me.kcybulski.chinachat.domain.*
+import me.kcybulski.chinachat.infrastructure.CloudinaryFilesStorage
+import me.kcybulski.chinachat.infrastructure.InMemoryChatsRepository
 import me.kcybulski.chinachat.infrastructure.InMemoryMessagesRepository
 import me.kcybulski.chinachat.plugins.WeatherPlugin
 
 fun main() {
 
     val messagesRepository: MessagesRepository = InMemoryMessagesRepository()
-    val chatFactory = ChatFactory(messagesRepository)
+    val chatsRepository: ChatsRepository = InMemoryChatsRepository()
 
-    val chats = ChatsList()
+    val chatFactory = ChatFactory(messagesRepository)
+    val chats = ChatsList(chatsRepository)
+
     chats.add(createGeneralChat(messagesRepository))
 
-    Server(chats, chatFactory).run { start() }
+    val fileStorage: FilesStorage = CloudinaryFilesStorage()
+
+    Server(chats, chatFactory, fileStorage).run { start() }
 }
 
 private fun createGeneralChat(messagesRepository: MessagesRepository) =

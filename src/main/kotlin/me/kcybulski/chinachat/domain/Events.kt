@@ -8,10 +8,15 @@ interface Event {
 }
 
 data class MessageEvent(
-    val content: String,
+    val content: String = "",
+    val mediaUrl: String = "",
     val author: User,
     override val time: LocalDateTime = now()
-) : Event
+) : Event {
+
+    fun hasContent() = content.isNotBlank() || mediaUrl.isNotBlank()
+
+}
 
 data class UserJoinedEvent(
     val user: User,
@@ -28,4 +33,8 @@ data class UserWritingEvent(
     override val time: LocalDateTime = now()
 ) : Event
 
-data class MessageRequest(val content: String)
+data class MessageRequest(val content: String?, val mediaUrl: String?) {
+
+    fun toEvent(author: User) = MessageEvent(content = content ?: "", mediaUrl = mediaUrl ?: "", author = author)
+
+}
