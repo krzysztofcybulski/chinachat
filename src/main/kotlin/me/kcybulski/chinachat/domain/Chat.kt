@@ -3,6 +3,7 @@ package me.kcybulski.chinachat.domain
 import io.reactivex.BackpressureStrategy.LATEST
 import io.reactivex.Flowable
 import io.reactivex.subjects.PublishSubject
+import me.kcybulski.chinachat.api.Command
 import java.util.concurrent.CompletableFuture.completedFuture
 import java.util.concurrent.CompletionStage
 
@@ -27,31 +28,30 @@ class Chat(val id: String, val name: String, private val messagesRepository: Mes
         return completedFuture(null)
     }
 
-    fun sendMessage(user: User, messageRequest: MessageRequest) {
-        val message = MessageEvent(messageRequest.content, user)
-        if (message.content.isNotBlank()) {
+    fun sendMessage(author: User, messageRequest: MessageRequest) {
+        val message = MessageEvent(messageRequest.content, author)
+        if (message.content.isNotBlank() && isNotCommand(message)) {
             messagesRepository.save(this, message)
                 .thenAccept { sendEvent(it) }
         }
     }
 
-    fun getMessages(): Flowable<MessageEvent> = messagesRepository.getMessages(this)
+    fun startWriting(user: User) = sendEvent(UserWritingEvent(user))
 
-    fun startWriting(user: User) {
-        sendEvent(UserWritingEvent(user))
-    }
+    fun getMessages(): Flowable<MessageEvent> = messagesRepository.getMessages(this)
 
     fun addPlugin(plugin: Plugin) {
         chatStream()
-            .filter { it is MessageEvent && it.content.startsWith("/${plugin.command()} ") }
-            .subscribe { plugin.run(this, *getArguments(it)) }
+            .filter { it is MessageEvent }
+            .map { Command(plugin, it as MessageEvent) }
+            .filter { it.isCommand() }
+            .subscribe { plugin.run(this, *it.getArguments()) }
     }
-
-    private fun getArguments(it: Event?) =
-        (it as MessageEvent).content.split(whitespaceRegex).drop(1).toTypedArray()
 
     private fun sendEvent(event: Event) = chatSubject.onNext(event)
 
     private fun chatStream() = chatSubject.toFlowable(LATEST)
+
+    private fun isNotCommand(event: MessageEvent) = event.content.startsWith("/")
 
 }

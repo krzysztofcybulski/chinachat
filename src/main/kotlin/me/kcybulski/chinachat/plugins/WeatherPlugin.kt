@@ -7,6 +7,8 @@ import me.kcybulski.chinachat.domain.User
 
 class WeatherPlugin : Plugin {
 
+    private val apiKey = System.getenv("OPEN_WEATHER_API_KEY")
+
     override fun command() = "weather"
 
     override fun run(chat: Chat, vararg args: String) {

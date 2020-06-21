@@ -8,6 +8,7 @@ import me.kcybulski.chinachat.domain.Security
 import ratpack.func.Action
 import ratpack.handling.Chain
 import ratpack.handling.Context
+import ratpack.handling.RequestLogger
 import ratpack.server.RatpackServer
 
 class Server(
@@ -35,6 +36,7 @@ class Server(
 
     private fun api(): Action<Chain> = Action<Chain> { chain ->
         chain
+            .all(RequestLogger.ncsa())
             .all { addCORSHeaders(it) }
             .post("login", LoginApi(security))
             .prefix("chats") { ChatApi(it, chats, chatFactory) }

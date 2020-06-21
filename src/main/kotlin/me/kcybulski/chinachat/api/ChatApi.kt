@@ -66,7 +66,7 @@ class ChatApi(
     private fun secured(ctx: Context, func: (User) -> Unit) = getAccessToken(ctx)
         ?.let { security.getUser(it) }
         ?.run(func)
-        ?: throw RuntimeException()
+        ?: ctx.clientError(401)
 
     private fun getAccessToken(ctx: Context) =
         ctx.request.headers[AUTHORIZATION]
