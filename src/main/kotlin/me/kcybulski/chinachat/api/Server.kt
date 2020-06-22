@@ -1,5 +1,6 @@
 package me.kcybulski.chinachat.api
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import me.kcybulski.chinachat.domain.ChatFactory
@@ -17,7 +18,9 @@ class Server(
     private val chatFactory: ChatFactory,
     private val filesStorage: FilesStorage,
     private val security: Security = Security(),
-    private val objectMapper: ObjectMapper = ObjectMapper().registerModule(KotlinModule())
+    private val objectMapper: ObjectMapper = ObjectMapper()
+        .registerModule(KotlinModule())
+        .setSerializationInclusion(NON_NULL)
 ) {
 
     private val ratpackServer: RatpackServer = RatpackServer.of { server ->

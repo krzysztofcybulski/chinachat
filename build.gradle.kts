@@ -34,10 +34,12 @@ dependencies {
     implementation("com.fasterxml.jackson.module", "jackson-module-kotlin", "2.11.0")
     implementation("com.cloudinary", "cloudinary-http44", "1.26.0")
     implementation("org.slf4j", "slf4j-simple", "2.0.0-alpha1")
+    implementation("log4j", "log4j", "1.2.17")
 
     testImplementation("io.ratpack", "ratpack-test", "1.8.0")
     testImplementation("org.codehaus.groovy", "groovy-all", "2.5.11")
     testImplementation("org.spockframework", "spock-core", "2.0-M2-groovy-3.0")
+    testImplementation("org.java-websocket", "Java-WebSocket", "1.5.1")
 }
 
 tasks {

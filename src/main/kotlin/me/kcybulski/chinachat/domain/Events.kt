@@ -1,5 +1,6 @@
 package me.kcybulski.chinachat.domain
 
+import java.time.Clock
 import java.time.LocalDateTime
 import java.time.LocalDateTime.now
 
@@ -11,7 +12,7 @@ data class MessageEvent(
     val content: String = "",
     val mediaUrl: String = "",
     val author: User,
-    override val time: LocalDateTime = now()
+    override val time: LocalDateTime
 ) : Event {
 
     fun hasContent() = content.isNotBlank() || mediaUrl.isNotBlank()
@@ -35,13 +36,7 @@ data class UserWritingEvent(
 
 data class MessageRequest(val content: String?, val mediaUrl: String?) {
 
-    fun toEvent(author: User) =
-        MessageEvent(
-            content = content
-                ?.replace(":)", "\uD83D\uDE42")
-                ?.replace(":(", "\uD83D\uDE41")
-                ?.replace(":D", "\uD83D\uDE01")
-                ?: "", mediaUrl = mediaUrl ?: "", author = author
-        )
+    fun toEvent(author: User, clock: Clock) =
+        MessageEvent(content ?: "", mediaUrl ?: "", author, now(clock))
 
 }

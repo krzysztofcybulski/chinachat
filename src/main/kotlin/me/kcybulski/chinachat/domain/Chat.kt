@@ -4,15 +4,21 @@ import io.reactivex.BackpressureStrategy.LATEST
 import io.reactivex.Flowable
 import io.reactivex.subjects.PublishSubject
 import me.kcybulski.chinachat.api.Command
+import me.kcybulski.chinachat.domain.interceptors.MessageEventInterceptor
+import java.time.Clock
 import java.util.concurrent.CompletableFuture.completedFuture
 import java.util.concurrent.CompletionStage
 
-class Chat(val id: String, val name: String, private val messagesRepository: MessagesRepository) {
+class Chat(
+    val id: String,
+    val name: String,
+    private val messagesRepository: MessagesRepository,
+    private val messageInterceptor: MessageEventInterceptor,
+    private val clock: Clock
+) {
 
     private val chatSubject = PublishSubject.create<Event>()
     private val users: MutableSet<User> = mutableSetOf()
-
-    private val whitespaceRegex = "\\s+".toRegex()
 
     fun join(user: User): CompletionStage<Flowable<Event>> {
         if (users.add(user)) {
@@ -28,13 +34,11 @@ class Chat(val id: String, val name: String, private val messagesRepository: Mes
         return completedFuture(null)
     }
 
-    fun sendMessage(author: User, messageRequest: MessageRequest) {
-        val message = messageRequest.toEvent(author)
-        if (message.hasContent() && isNotCommand(message)) {
-            messagesRepository.save(this, message)
-                .thenAccept { sendEvent(it) }
-        }
-    }
+    fun sendMessage(author: User, messageRequest: MessageRequest) =
+        messageRequest.toEvent(author, clock)
+            .let { messageInterceptor.intercept(it) }
+            ?.let { messagesRepository.save(this, it) }
+            ?.thenAccept { sendEvent(it) }
 
     fun startWriting(user: User) = sendEvent(UserWritingEvent(user))
 
@@ -51,7 +55,5 @@ class Chat(val id: String, val name: String, private val messagesRepository: Mes
     private fun sendEvent(event: Event) = chatSubject.onNext(event)
 
     private fun chatStream() = chatSubject.toFlowable(LATEST)
-
-    private fun isNotCommand(event: MessageEvent) = !event.content.startsWith("/")
 
 }
