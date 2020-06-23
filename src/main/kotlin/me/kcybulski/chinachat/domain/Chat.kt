@@ -5,6 +5,9 @@ import io.reactivex.Flowable
 import io.reactivex.subjects.PublishSubject
 import me.kcybulski.chinachat.api.Command
 import me.kcybulski.chinachat.domain.interceptors.MessageEventInterceptor
+import me.kcybulski.chinachat.domain.model.*
+import me.kcybulski.chinachat.domain.ports.MessagesRepository
+import me.kcybulski.chinachat.domain.ports.Plugin
 import java.time.Clock
 import java.util.concurrent.CompletableFuture.completedFuture
 import java.util.concurrent.CompletionStage
@@ -40,7 +43,11 @@ class Chat(
             ?.let { messagesRepository.save(this, it) }
             ?.thenAccept { sendEvent(it) }
 
-    fun startWriting(user: User) = sendEvent(UserWritingEvent(user))
+    fun startWriting(user: User) = sendEvent(
+        UserWritingEvent(
+            user
+        )
+    )
 
     fun getMessages(): Flowable<MessageEvent> = messagesRepository.getMessages(this)
 

@@ -1,5 +1,6 @@
-package me.kcybulski.chinachat.domain
+package me.kcybulski.chinachat.domain.ports
 
+import me.kcybulski.chinachat.domain.Chat
 import java.util.concurrent.CompletableFuture
 
 interface ChatsRepository {

@@ -6,9 +6,9 @@ import me.kcybulski.chinachat.api.dto.EventDTO
 import me.kcybulski.chinachat.api.dto.MessageAction
 import me.kcybulski.chinachat.api.dto.WritingAction
 import me.kcybulski.chinachat.domain.Chat
-import me.kcybulski.chinachat.domain.Event
-import me.kcybulski.chinachat.domain.MessageRequest
-import me.kcybulski.chinachat.domain.User
+import me.kcybulski.chinachat.domain.model.Event
+import me.kcybulski.chinachat.domain.model.MessageRequest
+import me.kcybulski.chinachat.domain.model.User
 import ratpack.handling.Chain
 import ratpack.websocket.WebSocket
 import ratpack.websocket.WebSocketClose
@@ -38,7 +38,10 @@ class ChatWebSocketsHandler(
 
     override fun onMessage(frame: WebSocketMessage<String>) {
         when (val action = getAction(frame)) {
-            is MessageAction -> chat.sendMessage(user, MessageRequest(action.content, action.mediaUrl))
+            is MessageAction -> chat.sendMessage(
+                user,
+                MessageRequest(action.content, action.mediaUrl)
+            )
             is WritingAction -> chat.startWriting(user)
         }
     }

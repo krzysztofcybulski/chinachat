@@ -2,8 +2,8 @@ package me.kcybulski.chinachat.infrastructure
 
 import io.reactivex.Flowable
 import me.kcybulski.chinachat.domain.Chat
-import me.kcybulski.chinachat.domain.MessageEvent
-import me.kcybulski.chinachat.domain.MessagesRepository
+import me.kcybulski.chinachat.domain.model.MessageEvent
+import me.kcybulski.chinachat.domain.ports.MessagesRepository
 import java.util.concurrent.CompletableFuture.completedFuture
 import java.util.concurrent.CompletionStage
 

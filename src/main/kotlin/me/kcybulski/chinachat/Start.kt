@@ -1,9 +1,14 @@
 package me.kcybulski.chinachat
 
 import me.kcybulski.chinachat.api.Server
-import me.kcybulski.chinachat.domain.*
+import me.kcybulski.chinachat.domain.Chat
+import me.kcybulski.chinachat.domain.ChatFactory
+import me.kcybulski.chinachat.domain.ChatsList
 import me.kcybulski.chinachat.domain.interceptors.CompositeInterceptor
 import me.kcybulski.chinachat.domain.interceptors.MessageEventInterceptor
+import me.kcybulski.chinachat.domain.ports.ChatsRepository
+import me.kcybulski.chinachat.domain.ports.FilesStorage
+import me.kcybulski.chinachat.domain.ports.MessagesRepository
 import me.kcybulski.chinachat.infrastructure.CloudinaryFilesStorage
 import me.kcybulski.chinachat.infrastructure.InMemoryChatsRepository
 import me.kcybulski.chinachat.infrastructure.InMemoryMessagesRepository

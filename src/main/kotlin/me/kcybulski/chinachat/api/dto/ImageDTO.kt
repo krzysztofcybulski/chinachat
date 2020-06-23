@@ -1,6 +1,6 @@
 package me.kcybulski.chinachat.api.dto
 
-import me.kcybulski.chinachat.domain.File
+import me.kcybulski.chinachat.domain.model.File
 
 data class ImageResponse(val url: String) {
 

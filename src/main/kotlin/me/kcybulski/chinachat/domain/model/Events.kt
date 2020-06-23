@@ -1,4 +1,4 @@
-package me.kcybulski.chinachat.domain
+package me.kcybulski.chinachat.domain.model
 
 import java.time.Clock
 import java.time.LocalDateTime
@@ -37,6 +37,11 @@ data class UserWritingEvent(
 data class MessageRequest(val content: String?, val mediaUrl: String?) {
 
     fun toEvent(author: User, clock: Clock) =
-        MessageEvent(content ?: "", mediaUrl ?: "", author, now(clock))
+        MessageEvent(
+            content ?: "",
+            mediaUrl ?: "",
+            author,
+            now(clock)
+        )
 
 }

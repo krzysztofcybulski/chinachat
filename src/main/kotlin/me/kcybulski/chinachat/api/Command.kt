@@ -1,7 +1,7 @@
 package me.kcybulski.chinachat.api
 
-import me.kcybulski.chinachat.domain.MessageEvent
-import me.kcybulski.chinachat.domain.Plugin
+import me.kcybulski.chinachat.domain.model.MessageEvent
+import me.kcybulski.chinachat.domain.ports.Plugin
 
 class Command(
     private val plugin: Plugin,

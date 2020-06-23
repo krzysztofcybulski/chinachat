@@ -1,5 +1,6 @@
 package me.kcybulski.chinachat.domain
 
+import me.kcybulski.chinachat.domain.ports.ChatsRepository
 import java.util.concurrent.CompletableFuture
 
 class ChatsList(private val chatsRepository: ChatsRepository) {

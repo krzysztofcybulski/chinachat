@@ -5,8 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import me.kcybulski.chinachat.domain.ChatFactory
 import me.kcybulski.chinachat.domain.ChatsList
-import me.kcybulski.chinachat.domain.FilesStorage
 import me.kcybulski.chinachat.domain.Security
+import me.kcybulski.chinachat.domain.ports.FilesStorage
 import ratpack.func.Action
 import ratpack.handling.Chain
 import ratpack.handling.Context

@@ -8,7 +8,8 @@ import ratpack.handling.Context
 import ratpack.handling.Handler
 import ratpack.jackson.Jackson.json
 
-class LoginApi(
+class LoginApi
+    (
     private val security: Security
 ) : Handler {
 

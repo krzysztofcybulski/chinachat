@@ -3,6 +3,7 @@ package me.kcybulski.chinachat.domain
 import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm.HMAC256
 import com.auth0.jwt.exceptions.JWTVerificationException
+import me.kcybulski.chinachat.domain.model.User
 import java.util.concurrent.CompletableFuture
 import java.util.concurrent.CompletableFuture.completedFuture
 

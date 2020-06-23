@@ -1,6 +1,7 @@
 package me.kcybulski.chinachat.domain
 
 import me.kcybulski.chinachat.domain.interceptors.MessageEventInterceptor
+import me.kcybulski.chinachat.domain.ports.MessagesRepository
 import java.time.Clock
 import java.util.UUID.randomUUID
 

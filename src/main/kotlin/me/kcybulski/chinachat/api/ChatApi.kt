@@ -7,7 +7,7 @@ import me.kcybulski.chinachat.api.dto.ChatResponse.Companion.fromChat
 import me.kcybulski.chinachat.domain.ChatFactory
 import me.kcybulski.chinachat.domain.ChatsList
 import me.kcybulski.chinachat.domain.Security
-import me.kcybulski.chinachat.domain.User
+import me.kcybulski.chinachat.domain.model.User
 import ratpack.exec.Promise.toPromise
 import ratpack.handling.Chain
 import ratpack.handling.Context

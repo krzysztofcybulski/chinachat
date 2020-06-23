@@ -1,6 +1,6 @@
 package me.kcybulski.chinachat.domain.interceptors
 
-import me.kcybulski.chinachat.domain.MessageEvent
+import me.kcybulski.chinachat.domain.model.MessageEvent
 
 class EmojisMessageInterceptor : MessageEventInterceptor {
 

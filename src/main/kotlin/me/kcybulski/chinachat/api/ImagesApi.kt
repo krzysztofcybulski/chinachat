@@ -2,9 +2,9 @@ package me.kcybulski.chinachat.api
 
 import io.netty.handler.codec.http.HttpHeaderNames
 import me.kcybulski.chinachat.api.dto.ImageResponse
-import me.kcybulski.chinachat.domain.FilesStorage
 import me.kcybulski.chinachat.domain.Security
-import me.kcybulski.chinachat.domain.User
+import me.kcybulski.chinachat.domain.model.User
+import me.kcybulski.chinachat.domain.ports.FilesStorage
 import ratpack.exec.Promise.toPromise
 import ratpack.form.Form
 import ratpack.handling.Context

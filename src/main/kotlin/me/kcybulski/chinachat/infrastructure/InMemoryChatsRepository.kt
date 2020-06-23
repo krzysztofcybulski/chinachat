@@ -1,7 +1,7 @@
 package me.kcybulski.chinachat.infrastructure
 
 import me.kcybulski.chinachat.domain.Chat
-import me.kcybulski.chinachat.domain.ChatsRepository
+import me.kcybulski.chinachat.domain.ports.ChatsRepository
 import java.util.concurrent.CompletableFuture
 
 class InMemoryChatsRepository : ChatsRepository {

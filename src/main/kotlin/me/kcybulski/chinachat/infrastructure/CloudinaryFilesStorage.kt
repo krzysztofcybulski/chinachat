@@ -1,8 +1,8 @@
 package me.kcybulski.chinachat.infrastructure
 
 import com.cloudinary.Cloudinary
-import me.kcybulski.chinachat.domain.File
-import me.kcybulski.chinachat.domain.FilesStorage
+import me.kcybulski.chinachat.domain.model.File
+import me.kcybulski.chinachat.domain.ports.FilesStorage
 import ratpack.exec.Blocking
 import java.lang.System.getenv
 import java.util.concurrent.CompletableFuture
@@ -14,6 +14,6 @@ class CloudinaryFilesStorage : FilesStorage {
     override fun upload(bytes: ByteArray): CompletableFuture<File> = Blocking.get {
         cloudinary.uploader().upload(bytes, mutableMapOf<String, String>())
     }
-        .map { File(it["url"] as String) }.toCompletableFuture()
+        .map { File(it["secure_url"] as String) }.toCompletableFuture()
 
 }
