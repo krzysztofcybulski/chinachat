@@ -10,6 +10,7 @@ plugins {
     kotlin("jvm") version "1.3.72"
     groovy
     application
+    id("com.github.lkishalmi.gatling") version "3.3.4"
 }
 
 apply {
